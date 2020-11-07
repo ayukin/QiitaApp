@@ -1,4 +1,4 @@
-# Qiita検索アプリ
+# QiitaApp（Qiita検索アプリ）
 
 ![output](https://user-images.githubusercontent.com/64976657/98445905-afcc2980-215d-11eb-8ba4-f2248da89a04.gif)
 
