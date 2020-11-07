@@ -10,10 +10,17 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // ナビゲーションバーのカスタマイズ
+        UINavigationBar.appearance().barTintColor = UIColor(named: "QiitaGreen")
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        // タブバーコントローラーのカスタマイズ
+        UITabBar.appearance().tintColor = UIColor.black
+        UITabBar.appearance().unselectedItemTintColor = UIColor.lightGray
+        
         return true
     }
 

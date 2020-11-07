@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vAE-oa-dgg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Field Second View Controller-->
+        <scene sceneID="6gF-p8-0BX">
+            <objects>
+                <viewController storyboardIdentifier="FieldSecondVC" id="vAE-oa-dgg" customClass="FieldSecondViewController" customModule="QiitaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XeV-ti-4OT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jio-6K-Icu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vAE-oa-dgg" id="xNc-Zd-8VI"/>
+                                    <outlet property="delegate" destination="vAE-oa-dgg" id="Axk-Tc-3g8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KD0-mQ-Efv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jio-6K-Icu" firstAttribute="leading" secondItem="KD0-mQ-Efv" secondAttribute="leading" id="R5e-ss-mGR"/>
+                            <constraint firstItem="KD0-mQ-Efv" firstAttribute="bottom" secondItem="jio-6K-Icu" secondAttribute="bottom" id="Roa-6d-KGe"/>
+                            <constraint firstItem="jio-6K-Icu" firstAttribute="top" secondItem="KD0-mQ-Efv" secondAttribute="top" id="TOK-ro-7QF"/>
+                            <constraint firstItem="KD0-mQ-Efv" firstAttribute="trailing" secondItem="jio-6K-Icu" secondAttribute="trailing" id="frJ-U7-XvX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="jio-6K-Icu" id="qcb-mH-U55"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Lo-DR-3nS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="155"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

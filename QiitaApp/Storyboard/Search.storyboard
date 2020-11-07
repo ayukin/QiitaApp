@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ytv-eR-pgH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="b78-wv-yjX">
+            <objects>
+                <viewController id="lF8-DR-XII" customClass="SearchViewController" customModule="QiitaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VTG-NN-WrY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cp9-cB-8PP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="41" id="yW1-EX-HiA" customClass="SearchTableViewCell" customModule="QiitaApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="41"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yW1-EX-HiA" id="3oh-Nm-BhU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plw-gv-8sN">
+                                                    <rect key="frame" x="20" y="10" width="334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC6-re-xrH">
+                                                    <rect key="frame" x="374" y="10.5" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="61L-8i-TRX"/>
+                                                        <constraint firstAttribute="width" constant="20" id="e7u-KH-KW8"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonAction:" destination="yW1-EX-HiA" eventType="touchUpInside" id="d9S-0A-H6y"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="plw-gv-8sN" secondAttribute="bottom" constant="10" id="AOd-52-sTc"/>
+                                                <constraint firstItem="DC6-re-xrH" firstAttribute="leading" secondItem="plw-gv-8sN" secondAttribute="trailing" constant="20" id="Cfu-T1-qjV"/>
+                                                <constraint firstItem="DC6-re-xrH" firstAttribute="top" secondItem="3oh-Nm-BhU" secondAttribute="top" constant="10.5" id="i9c-T7-Lwv"/>
+                                                <constraint firstAttribute="bottom" secondItem="DC6-re-xrH" secondAttribute="bottom" constant="10.5" id="j8a-zX-h8I"/>
+                                                <constraint firstItem="plw-gv-8sN" firstAttribute="top" secondItem="3oh-Nm-BhU" secondAttribute="top" constant="10" id="qnC-d2-ukT"/>
+                                                <constraint firstAttribute="trailing" secondItem="DC6-re-xrH" secondAttribute="trailing" constant="20" symbolic="YES" id="qxi-yZ-6nI"/>
+                                                <constraint firstItem="plw-gv-8sN" firstAttribute="leading" secondItem="3oh-Nm-BhU" secondAttribute="leading" constant="20" symbolic="YES" id="y7x-QT-oaX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deleteButton" destination="DC6-re-xrH" id="eTX-vH-SLK"/>
+                                            <outlet property="searchLabel" destination="plw-gv-8sN" id="wMh-n8-9I0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lF8-DR-XII" id="wCt-4C-Shx"/>
+                                    <outlet property="delegate" destination="lF8-DR-XII" id="mzg-Jw-TGW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tg7-ee-Hmx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tg7-ee-Hmx" firstAttribute="trailing" secondItem="cp9-cB-8PP" secondAttribute="trailing" id="12e-cB-hyd"/>
+                            <constraint firstItem="cp9-cB-8PP" firstAttribute="leading" secondItem="Tg7-ee-Hmx" secondAttribute="leading" id="4e9-Cs-ffV"/>
+                            <constraint firstItem="Tg7-ee-Hmx" firstAttribute="bottom" secondItem="cp9-cB-8PP" secondAttribute="bottom" id="DcK-S6-XAs"/>
+                            <constraint firstItem="cp9-cB-8PP" firstAttribute="top" secondItem="Tg7-ee-Hmx" secondAttribute="top" id="vez-BZ-NXd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Btz-PT-IDt"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="cp9-cB-8PP" id="xDJ-ps-tlR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t2K-fv-cob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373.913043478261" y="95.758928571428569"/>
+        </scene>
+        <!--サーチ-->
+        <scene sceneID="yhm-b3-GBR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytv-eR-pgH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="サーチ" image="search" id="miZ-Ey-DAm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qid-KF-jAh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lF8-DR-XII" kind="relationship" relationship="rootViewController" id="6mY-L8-1a0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaN-wm-NYD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.768115942029" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="delete" width="30" height="30"/>
+        <image name="search" width="25" height="25"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
