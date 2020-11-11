@@ -10,7 +10,7 @@ import WebKit
 
 class WebViewController: UIViewController {
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet private weak var webView: WKWebView!
     
     var url: String?
     
@@ -27,19 +27,15 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
-    
-    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         startIndicator(style: "circleStrokeSpin")
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("読み込み完了")
         dismissIndicator()
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("読み込み失敗")
         dismissIndicator()
         displayEmptyView(message: "データ取得に失敗しました")
     }
@@ -48,6 +44,4 @@ extension WebViewController: WKNavigationDelegate {
         dismissIndicator()
     }
 
-    
-    
 }

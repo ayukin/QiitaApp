@@ -11,9 +11,9 @@ import Nuke
 
 class ArticleCustomCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     var article: ArticleEntity? {
         didSet {

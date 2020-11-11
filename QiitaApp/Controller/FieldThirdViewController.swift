@@ -10,18 +10,17 @@ import XLPagerTabStrip
 
 final class FieldThirdViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: CustomTableView!
     
     private var presenter: FieldThirdPresenterInput!
     func inject(presenter: FieldThirdPresenterInput) {
         self.presenter = presenter
     }
     
-    var refreshControl: UIRefreshControl!
     private let CELL_IDENTIFIER = "cell"
     
     //ここがボタンのタイトルに利用されます
-    var itemInfo: IndicatorInfo = "Swift"
+    private var itemInfo: IndicatorInfo = "Swift"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +32,16 @@ final class FieldThirdViewController: UIViewController {
         presenter.getArticlesAction()
     }
     
-    func setupUI() {
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "再読み込み中")
-        refreshControl.addTarget(self, action: #selector(self.refreshArticlesAction), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshControl)
+    private func setupUI() {
         tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
+        tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction))
     }
     
-    @objc func refreshArticlesAction() {
+    @objc private func refreshArticlesAction() {
         // Qiitaからデータ取得する処理
         presenter.refreshArticlesAction()
     }
-    
+
 }
 
 extension FieldThirdViewController: IndicatorInfoProvider {
@@ -108,7 +104,7 @@ extension FieldThirdViewController: FieldThirdPresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.refreshControl?.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
@@ -116,7 +112,7 @@ extension FieldThirdViewController: FieldThirdPresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.refreshControl?.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
     

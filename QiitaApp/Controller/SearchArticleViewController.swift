@@ -9,14 +9,13 @@ import UIKit
 
 final class SearchArticleViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: CustomTableView!
     
     private var presenter: SearchArticlePresenterInput!
     func inject(presenter: SearchArticlePresenterInput) {
         self.presenter = presenter
     }
     
-    var refreshControl: UIRefreshControl!
     private let CELL_IDENTIFIER = "cell"
     var tag: String!
 
@@ -33,15 +32,12 @@ final class SearchArticleViewController: UIViewController {
         presenter.getArticlesAction(tag: tag)
     }
     
-    func setupUI() {
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "再読み込み中")
-        refreshControl.addTarget(self, action: #selector(self.refreshArticlesAction), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshControl)
+    private func setupUI() {
         tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
+        tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction))
     }
     
-    @objc func refreshArticlesAction() {
+    @objc private func refreshArticlesAction() {
         // Qiitaからデータ取得する処理
         presenter.refreshArticlesAction(tag: tag)
     }
@@ -102,7 +98,7 @@ extension SearchArticleViewController: SearchArticlePresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.refreshControl?.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
@@ -110,7 +106,7 @@ extension SearchArticleViewController: SearchArticlePresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.refreshControl?.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
     

@@ -14,11 +14,11 @@ protocol SearchTableViewCellDelegate: class {
 class SearchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var searchLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton!
     
     var cellDone: (()->Void)?
     
-    // delegateはメモリリークを回避するためweak参照する
+
     weak var delegate: SearchTableViewCellDelegate?
     
     override func awakeFromNib() {

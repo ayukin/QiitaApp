@@ -10,38 +10,46 @@ import XLPagerTabStrip
 
 final class FieldFirstViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: CustomTableView! {
+        didSet {
+            tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
+            tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction))
+        }
+    }
     
     private var presenter: FieldFirstPresenterInput!
     func inject(presenter: FieldFirstPresenterInput) {
         self.presenter = presenter
     }
     
-    var refreshControl: UIRefreshControl!
     private let CELL_IDENTIFIER = "cell"
     
     //ここがボタンのタイトルに利用されます
-    var itemInfo: IndicatorInfo = "新着"
+    private var itemInfo: IndicatorInfo = "新着"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 画面UIについての処理
-        setupUI()
-        // アクティビティインディケータのアニメーションを開始
-        startIndicator(style: "lineSpinFadeLoader")
+//        // アクティビティインディケータのアニメーションを開始
+//        startIndicator(style: "lineSpinFadeLoader")
+        
+//        tableView.beginRefreshing()
+//        // Qiitaからデータ取得する処理
+//        presenter.getArticlesAction()
+
+//        // Qiitaからデータ取得する処理
+//        presenter.getArticlesAction()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.beginRefreshing()
         // Qiitaからデータ取得する処理
         presenter.getArticlesAction()
     }
     
-    func setupUI() {
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "再読み込み中")
-        refreshControl.addTarget(self, action: #selector(self.refreshArticlesAction), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshControl)
-        tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
-    }
-    
-    @objc func refreshArticlesAction() {
+    @objc private func refreshArticlesAction() {
         // Qiitaからデータ取得する処理
         presenter.refreshArticlesAction()
     }
@@ -108,7 +116,7 @@ extension FieldFirstViewController: FieldFirstPresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
@@ -116,7 +124,7 @@ extension FieldFirstViewController: FieldFirstPresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        refreshControl.endRefreshing()
+        tableView.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
     

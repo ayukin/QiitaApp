@@ -23,7 +23,7 @@ class FieldViewController: ButtonBarPagerTabStripViewController {
         moveToViewController(at: 0, animated: false)
     }
     
-    func setupUI() {
+     private func setupUI() {
         self.navigationItem.title = "Qiita"
         // ButtonBar全体の背景色
         settings.style.buttonBarBackgroundColor = UIColor.white

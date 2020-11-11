@@ -27,9 +27,9 @@ final class FieldThirdPresenter: FieldThirdPresenterInput {
     
     private(set) var articles: [ArticleEntity] = []
     
-    var reloading: Bool = false
-    var refreshing: Bool = false
-    var page: Int = 20
+    private var reloading: Bool = false
+    private var refreshing: Bool = false
+    private var page: Int = 20
     
     init(view: FieldThirdPresenterOutput, model: FieldThirdModelInput) {
         self.view = view

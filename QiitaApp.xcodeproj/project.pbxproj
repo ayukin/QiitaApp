@@ -29,6 +29,8 @@
 		845D034425486C59002855F5 /* FieldThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D034325486C59002855F5 /* FieldThirdViewController.swift */; };
 		845D035025488241002855F5 /* ArticleCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D034E25488241002855F5 /* ArticleCustomCell.swift */; };
 		845D035125488241002855F5 /* ArticleCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D034F25488241002855F5 /* ArticleCustomCell.xib */; };
+		845D5D59255C2F8D00466EF2 /* UrlStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5D58255C2F8D00466EF2 /* UrlStyle.swift */; };
+		845DA6E2255A9FCC00029139 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DA6E1255A9FCC00029139 /* CustomTableView.swift */; };
 		845ECAD7254AC2E8004675AC /* ArticleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845ECAD6254AC2E8004675AC /* ArticleEntity.swift */; };
 		84628D9F2552EB0D003DC210 /* FieldSecondModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628D9E2552EB0C003DC210 /* FieldSecondModel.swift */; };
 		84628DAF2552FADC003DC210 /* FieldThirdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628DAE2552FADC003DC210 /* FieldThirdModel.swift */; };
@@ -99,6 +101,8 @@
 		845D034325486C59002855F5 /* FieldThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldThirdViewController.swift; sourceTree = "<group>"; };
 		845D034E25488241002855F5 /* ArticleCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCustomCell.swift; sourceTree = "<group>"; };
 		845D034F25488241002855F5 /* ArticleCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCustomCell.xib; sourceTree = "<group>"; };
+		845D5D58255C2F8D00466EF2 /* UrlStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlStyle.swift; sourceTree = "<group>"; };
+		845DA6E1255A9FCC00029139 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		845ECAD6254AC2E8004675AC /* ArticleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleEntity.swift; sourceTree = "<group>"; };
 		84628D9E2552EB0C003DC210 /* FieldSecondModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSecondModel.swift; sourceTree = "<group>"; };
 		84628DAE2552FADC003DC210 /* FieldThirdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldThirdModel.swift; sourceTree = "<group>"; };
@@ -177,7 +181,7 @@
 				845ECAD2254AC118004675AC /* Model */,
 				84C7CE462554137400922EB6 /* Presenter */,
 				846C05F0254DA68E008F4E90 /* Extension */,
-				845ECAD3254AC124004675AC /* TableViewCell */,
+				845ECAD3254AC124004675AC /* View */,
 				845ECAD4254AC14E004675AC /* Storyboard */,
 				845ECAD5254AC178004675AC /* Controller */,
 				844327382546FF9800D6FF77 /* AppDelegate.swift */,
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				845ECAD6254AC2E8004675AC /* ArticleEntity.swift */,
+				845D5D58255C2F8D00466EF2 /* UrlStyle.swift */,
 				844E3E7E254E85DA00731D9E /* FieldFirstModel.swift */,
 				84628D9E2552EB0C003DC210 /* FieldSecondModel.swift */,
 				84628DAE2552FADC003DC210 /* FieldThirdModel.swift */,
@@ -219,14 +224,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		845ECAD3254AC124004675AC /* TableViewCell */ = {
+		845ECAD3254AC124004675AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				845DA6E1255A9FCC00029139 /* CustomTableView.swift */,
 				845D034E25488241002855F5 /* ArticleCustomCell.swift */,
 				845D034F25488241002855F5 /* ArticleCustomCell.xib */,
 				84C0F4A32550736F00B44C0A /* SearchTableViewCell.swift */,
 			);
-			path = TableViewCell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		845ECAD4254AC14E004675AC /* Storyboard */ = {
@@ -556,6 +562,7 @@
 				844E3E8E254F17FB00731D9E /* Date_Extension.swift in Sources */,
 				845D035025488241002855F5 /* ArticleCustomCell.swift in Sources */,
 				84959415254703D000F57661 /* SearchViewController.swift in Sources */,
+				845D5D59255C2F8D00466EF2 /* UrlStyle.swift in Sources */,
 				844327392546FF9800D6FF77 /* AppDelegate.swift in Sources */,
 				8443273B2546FF9800D6FF77 /* SceneDelegate.swift in Sources */,
 				844E3E7F254E85DA00731D9E /* FieldFirstModel.swift in Sources */,
@@ -569,6 +576,7 @@
 				846C05F2254DA6E2008F4E90 /* UIViewController_Extension.swift in Sources */,
 				848ECE1625559FF0006023E8 /* FieldFirstPresenter.swift in Sources */,
 				84959410254703AE00F57661 /* FieldViewController.swift in Sources */,
+				845DA6E2255A9FCC00029139 /* CustomTableView.swift in Sources */,
 				845D033F25486C37002855F5 /* FieldSecondViewController.swift in Sources */,
 				845D034425486C59002855F5 /* FieldThirdViewController.swift in Sources */,
 				84C0F4A42550736F00B44C0A /* SearchTableViewCell.swift in Sources */,

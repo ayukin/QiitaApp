@@ -9,14 +9,14 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var presenter: SearchPresenterInput!
     func inject(presenter: SearchPresenterInput) {
         self.presenter = presenter
     }
 
-    var searchBar: UISearchBar!
+    private var searchBar: UISearchBar!
     var selectedCellIndex: IndexPath?
 
     private let CELL_IDENTIFIER = "searchCell"
@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
         tableView.reloadData()
     }
 
-    func setupSearchBar() {
+    private func setupSearchBar() {
         if let navigationBarFrame = navigationController?.navigationBar.bounds {
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             searchBar.delegate = self
@@ -74,6 +74,10 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
+    func refreshArticlesAction() {
+        
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
