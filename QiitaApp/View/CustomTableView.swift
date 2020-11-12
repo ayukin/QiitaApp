@@ -30,17 +30,13 @@ class CustomTableView: UITableView {
     
     private func commonInit(){
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "再読み込み中")
+        refreshControl.attributedTitle = NSAttributedString(string: "読み込み中")
         self.refreshControl = refreshControl
     }
-    
-    func addTargetToRefreshControl(_ target: Any?, action: Selector) {
-        self.refreshControl?.addTarget(target, action: action, for: UIControl.Event.valueChanged)
+        
+    func addTargetToRefreshControl(_ target: Any?, action: Selector, event: UIControl.Event) {
+        self.refreshControl?.addTarget(target, action: action, for: event)
     }
-    
-//    func addTargetToRefreshControl(_ target: Any?, action: Selector, for: UIControl.Event) {
-//        self.refreshControl?.addTarget(target, action: action, for: for)
-//    }
 
     func beginRefreshing() {
         guard let refreshControl = self.refreshControl else { return }

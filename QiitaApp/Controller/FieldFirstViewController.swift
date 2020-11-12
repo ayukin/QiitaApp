@@ -13,7 +13,7 @@ final class FieldFirstViewController: UIViewController {
     @IBOutlet private weak var tableView: CustomTableView! {
         didSet {
             tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
-            tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction))
+            tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction), event: .valueChanged)
         }
     }
     
@@ -29,13 +29,8 @@ final class FieldFirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        // アクティビティインディケータのアニメーションを開始
-//        startIndicator(style: "lineSpinFadeLoader")
         
 //        tableView.beginRefreshing()
-//        // Qiitaからデータ取得する処理
-//        presenter.getArticlesAction()
-
 //        // Qiitaからデータ取得する処理
 //        presenter.getArticlesAction()
 
@@ -43,7 +38,7 @@ final class FieldFirstViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         tableView.beginRefreshing()
         // Qiitaからデータ取得する処理
         presenter.getArticlesAction()

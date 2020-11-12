@@ -9,7 +9,12 @@ import UIKit
 
 final class SearchArticleViewController: UIViewController {
     
-    @IBOutlet private weak var tableView: CustomTableView!
+    @IBOutlet private weak var tableView: CustomTableView! {
+        didSet {
+            tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
+            tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction), event: .valueChanged)
+        }
+    }
     
     private var presenter: SearchArticlePresenterInput!
     func inject(presenter: SearchArticlePresenterInput) {
@@ -24,19 +29,19 @@ final class SearchArticleViewController: UIViewController {
                 
         presenter = SearchArticlePresenter(view: self, model: SearchArticleModel() as SearchArticleModelInput)
         
-        // 画面UIについての処理
-        setupUI()
-        // アクティビティインディケータのアニメーションを開始
-        startIndicator(style: "lineSpinFadeLoader")
+//        tableView.beginRefreshing()
+//        // Qiitaからデータ取得する処理
+//        presenter.getArticlesAction(tag: tag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        tableView.beginRefreshing()
         // Qiitaからデータ取得する処理
         presenter.getArticlesAction(tag: tag)
     }
-    
-    private func setupUI() {
-        tableView.register(UINib(nibName: "ArticleCustomCell", bundle: nil), forCellReuseIdentifier: CELL_IDENTIFIER)
-        tableView.addTargetToRefreshControl(self, action: #selector(self.refreshArticlesAction))
-    }
-    
+
     @objc private func refreshArticlesAction() {
         // Qiitaからデータ取得する処理
         presenter.refreshArticlesAction(tag: tag)
@@ -98,7 +103,7 @@ extension SearchArticleViewController: SearchArticlePresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        tableView.refreshControl?.endRefreshing()
+        tableView.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
@@ -106,7 +111,7 @@ extension SearchArticleViewController: SearchArticlePresenterOutput {
         if self.view.subviews.count >= 2 {
             dismissIndicator()
         }
-        tableView.refreshControl?.endRefreshing()
+        tableView.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
     

@@ -6,38 +6,29 @@
 //
 
 import Foundation
-
-struct UrlTrade {
-    enum Trade {
-        case new(page: Int)
-        case ios(page: Int)
-        case swift(page: Int)
-        case search(page: Int, tag: String)
-    }
-
-    func urlType(type: Trade) -> String {
-        let urlString = "https://qiita.com/api/v2/items?page=1&per_page="
-        switch type {
-        case let Trade.new(page):
-            let pageString = "&per_page=\(page)"
-            let url = urlString + pageString
+    
+enum UrlStyle {
+    case new
+    case ios
+    case swift
+    case search(tag: String)
+    
+    func urlType(page: Int) -> String {
+        let url = "https://qiita.com/api/v2/items?page=1&per_page=\(page)"
+        switch self {
+        case .new:
             return url
-        case let Trade.ios(page):
-            let pageString = "&per_page=\(page)"
-            let url = urlString + pageString + "&query=tag:iOS"
-            return url
-        case let Trade.swift(page):
-            let pageString = "&per_page=\(page)"
-            let url = urlString + pageString + "&query=tag:Swift"
-            return url
-        case let Trade.search(page, tag):
-            let pageString = "&per_page=\(page)"
-            let url = urlString + pageString + "&query=tag:\(tag)"
-            return url
+        case .ios:
+            return url + "&query=tag:iOS"
+        case .swift:
+            return url + "&query=tag:Swift"
+        case let .search(tag):
+            return url + "&query=tag:\(tag)"
         }
     }
+        
 }
 
-//let UrlType = UrlTrade.Trade.ios(page: 20)
-//let url = UrlTrade.urlType(type: UrlType)
+        
+
 
