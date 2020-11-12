@@ -27,10 +27,11 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
+    // webViewが読み込みを開始した時に実行されるメソッド
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         startIndicator(style: "circleStrokeSpin")
     }
-    
+    // webViewが読み込みを終了した時に実行されるメソッド
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         dismissIndicator()
     }

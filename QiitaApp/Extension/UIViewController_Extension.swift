@@ -11,35 +11,25 @@ import NVActivityIndicatorView
 extension UIViewController {
     // アクティビティインディケータのアニメーションを開始するメソッド
     func startIndicator(style: String) {
+        let posX: CGFloat = self.view.bounds.width/2 - 30
+        let posY: CGFloat = self.view.bounds.height/2 - 30
+        let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: posX, y: posY, width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
+        activityIndicatorView.startAnimating()
+
+        let loadingView = UIView(frame: self.view.bounds)
+        loadingView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
+
+        // 他のViewと被らない値を代入
+        loadingView.addSubview(activityIndicatorView)
+        self.view.addSubview(loadingView)
+         // overlayView.tag = 999
         
-        if style == "lineSpinFadeLoader" {
-            let posX: CGFloat = self.view.bounds.width/2 - 15
-            let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: posX, y: 150, width: 30, height: 30), type: NVActivityIndicatorType.lineSpinFadeLoader, color: UIColor.lightGray, padding: 0)
-            activityIndicatorView.startAnimating()
-            
-            let loadingView = UIView(frame: self.view.bounds)
-            loadingView.backgroundColor = UIColor.white
-
-            // 他のViewと被らない値を代入
-            loadingView.addSubview(activityIndicatorView)
-            self.view.addSubview(loadingView)
-             // overlayView.tag = 999
-
-        } else if style == "circleStrokeSpin" {
-            let posX: CGFloat = self.view.bounds.width/2 - 30
-            let posY: CGFloat = self.view.bounds.height/2 - 30
-            let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: posX, y: posY, width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
-            activityIndicatorView.startAnimating()
-
-            let loadingView = UIView(frame: self.view.bounds)
-            loadingView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
-
-            // 他のViewと被らない値を代入
-            loadingView.addSubview(activityIndicatorView)
-            self.view.addSubview(loadingView)
-             // overlayView.tag = 999
-        }
-        
+    }
+    
+    // アクティビティインディケータのアニメーションを停止させるメソッド
+    func dismissIndicator() {
+        self.view.subviews.last?.removeFromSuperview()
+        // self.view.viewWithTag(999)?.removeFromSuperview()
     }
     
     // エンプティービューを表示させるメソッド
@@ -58,12 +48,6 @@ extension UIViewController {
         emptyView.addSubview(label)
         self.view.addSubview(emptyView)
          // overlayView.tag = 999
-    }
-
-    // アクティビティインディケータのアニメーションを停止させるメソッド
-    func dismissIndicator() {
-        self.view.subviews.last?.removeFromSuperview()
-        // self.view.viewWithTag(999)?.removeFromSuperview()
     }
     
 }

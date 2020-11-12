@@ -7,28 +7,19 @@
 
 import UIKit
 
-protocol CustomTableViewDelegate: UITableViewDelegate {
-    func refreshArticlesAction()
-}
-
 class CustomTableView: UITableView {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
     override init(frame:CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .plain)
-        commonInit()
+        setup()
     }
     
-//    override init(frame:CGRect, style: UITableView.Style, emptyView: UIView) {
-//        super.init(frame: frame, style: .plain)
-//        commonInit()
-//    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit(){
+    private func setup() {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "読み込み中")
         self.refreshControl = refreshControl
@@ -49,5 +40,5 @@ class CustomTableView: UITableView {
         guard let refreshControl = self.refreshControl else { return }
         refreshControl.endRefreshing()
     }
-
+    
 }

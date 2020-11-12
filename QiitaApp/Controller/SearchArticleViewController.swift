@@ -100,17 +100,11 @@ extension SearchArticleViewController: UITableViewDelegate {
 extension SearchArticleViewController: SearchArticlePresenterOutput {
     // Qiitaからデータの取得完了した時の処理
     func completedGetArticlesAction(_ articles: [ArticleEntity]) {
-        if self.view.subviews.count >= 2 {
-            dismissIndicator()
-        }
         tableView.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
     func failedGetArticlesAction() {
-        if self.view.subviews.count >= 2 {
-            dismissIndicator()
-        }
         tableView.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
