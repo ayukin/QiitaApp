@@ -38,9 +38,9 @@ final class FieldSecondViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.beginRefreshing()
-        // Qiitaからデータ取得する処理
-        presenter.getArticlesAction()
+//        tableView.beginRefreshing()
+//        // Qiitaからデータ取得する処理
+//        presenter.getArticlesAction()
     }
     
     @objc private func refreshArticlesAction() {
@@ -77,19 +77,8 @@ extension FieldSecondViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // 遷移先のView（WebViewController）を取得
-        let storyboard = UIStoryboard(name: "Web", bundle: nil)
-        let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
-        // WebViewControllerへ情報を渡す
-        if let article = presenter.article(forRow: indexPath.row) {
-            webVC.url = article.url
-        }
-        // WebViewControllerの「戻るボタン」をカスタマイズ
-        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButton
-        // WebViewControllerへ画面遷移
-        self.navigationController?.pushViewController(webVC, animated: true)
+        // WebViewControllerへ画面遷移する処理
+        presenter.transitionAction(forRow: indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -107,17 +96,11 @@ extension FieldSecondViewController: UITableViewDelegate {
 extension FieldSecondViewController: FieldSecondPresenterOutput {
     // Qiitaからデータの取得完了した時の処理
     func completedGetArticlesAction(_ articles: [ArticleEntity]) {
-        if self.view.subviews.count >= 2 {
-            dismissIndicator()
-        }
         tableView.endRefreshing()
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
     func failedGetArticlesAction() {
-        if self.view.subviews.count >= 2 {
-            dismissIndicator()
-        }
         tableView.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }

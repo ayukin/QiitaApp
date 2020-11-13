@@ -13,6 +13,7 @@ protocol FieldFirstPresenterInput {
     func refreshArticlesAction()
     func updateArticlesAction()
     func article(forRow row: Int) -> ArticleEntity?
+    func transitionAction(forRow row: Int)
 }
 
 protocol FieldFirstPresenterOutput: AnyObject {
@@ -24,6 +25,7 @@ final class FieldFirstPresenter: FieldFirstPresenterInput {
     
     private weak var view: FieldFirstPresenterOutput!
     private var model: FieldFirstModelInput
+    private var router: FieldFirstTransitionRouter
     
     private(set) var articles: [ArticleEntity] = []
     
@@ -31,9 +33,10 @@ final class FieldFirstPresenter: FieldFirstPresenterInput {
     private var refreshing: Bool = false
     private var page: Int = 20
     
-    init(view: FieldFirstPresenterOutput, model: FieldFirstModelInput) {
+    init(view: FieldFirstPresenterOutput, model: FieldFirstModelInput, router: FieldFirstTransitionRouter) {
         self.view = view
         self.model = model
+        self.router = router
     }
     
     // Qiitaからデータ取得する処理
@@ -83,5 +86,12 @@ final class FieldFirstPresenter: FieldFirstPresenterInput {
         guard row < articles.count else { return nil }
         return articles[row]
     }
-        
+    
+    func transitionAction(forRow row: Int) {
+        guard row < articles.count else { return }
+        let url = articles[row].url
+        // 画面遷移の処理
+        router.transition(url: url)
+    }
+    
 }

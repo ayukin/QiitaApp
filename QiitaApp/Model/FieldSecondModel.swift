@@ -15,7 +15,9 @@ protocol FieldSecondModelInput {
 final class FieldSecondModel: FieldSecondModelInput {
     
     func getAPIInformations(page: Int, callback: @escaping ([ArticleEntity]?) -> Void) {
-        let url = "https://qiita.com/api/v2/items?page=1&per_page=\(page)&query=tag:iOS"
+        
+        let url = UrlStyle.ios.urlType(page: page)
+        
         AF.request(url).validate().response { response in
             switch response.result {
             case .success(_):

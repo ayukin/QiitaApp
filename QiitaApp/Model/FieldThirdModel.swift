@@ -15,7 +15,9 @@ protocol FieldThirdModelInput {
 final class FieldThirdModel: FieldThirdModelInput {
     
     func getAPIInformations(page: Int, callback: @escaping ([ArticleEntity]?) -> Void) {
-        let url = "https://qiita.com/api/v2/items?page=1&per_page=\(page)&query=tag:Swift"
+        
+        let url = UrlStyle.swift.urlType(page: page)
+        
         AF.request(url).validate().response { response in
             switch response.result {
             case .success(_):

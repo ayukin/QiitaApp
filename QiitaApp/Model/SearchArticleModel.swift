@@ -15,7 +15,9 @@ protocol SearchArticleModelInput {
 final class SearchArticleModel: SearchArticleModelInput {
     
     func getAPIInformations(page: Int, tag: String, callback: @escaping ([ArticleEntity]?) -> Void) {
-        let url = "https://qiita.com/api/v2/items?page=1&per_page=\(page)&query=tag:\(tag)"
+        
+        let url = UrlStyle.search(tag: tag).urlType(page: page)
+        
         AF.request(url).validate().response { response in
             switch response.result {
             case .success(_):

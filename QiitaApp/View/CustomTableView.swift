@@ -18,7 +18,7 @@ class CustomTableView: UITableView {
         super.init(frame: frame, style: .plain)
         setup()
     }
-    
+        
     private func setup() {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "読み込み中")

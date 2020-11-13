@@ -17,6 +17,8 @@
 		8443275B2546FF9B00D6FF77 /* QiitaAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443275A2546FF9B00D6FF77 /* QiitaAppUITests.swift */; };
 		8443276C2546FFF300D6FF77 /* Field.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8443276B2546FFF300D6FF77 /* Field.storyboard */; };
 		844327712547001D00D6FF77 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844327702547001D00D6FF77 /* Search.storyboard */; };
+		84467C5E255EF75A00E21F9F /* FieldSecondTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84467C5D255EF75A00E21F9F /* FieldSecondTransition.swift */; };
+		84467C63255EF77300E21F9F /* FieldThirdTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84467C62255EF77300E21F9F /* FieldThirdTransition.swift */; };
 		844E3E7F254E85DA00731D9E /* FieldFirstModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E3E7E254E85DA00731D9E /* FieldFirstModel.swift */; };
 		844E3E84254E928400731D9E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E3E83254E928400731D9E /* WebViewController.swift */; };
 		844E3E89254E929600731D9E /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844E3E88254E929600731D9E /* Web.storyboard */; };
@@ -36,6 +38,7 @@
 		84628DAF2552FADC003DC210 /* FieldThirdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628DAE2552FADC003DC210 /* FieldThirdModel.swift */; };
 		84628DB42552FD89003DC210 /* SearchArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628DB32552FD89003DC210 /* SearchArticleModel.swift */; };
 		846C05F2254DA6E2008F4E90 /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C05F1254DA6E2008F4E90 /* UIViewController_Extension.swift */; };
+		84729FBB255D64F6004834B0 /* FieldFirstTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84729FBA255D64F6004834B0 /* FieldFirstTransition.swift */; };
 		847378E9255153DA000F0156 /* SearchArticle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847378E8255153DA000F0156 /* SearchArticle.storyboard */; };
 		847378EE255153FC000F0156 /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847378ED255153FC000F0156 /* SearchArticleViewController.swift */; };
 		848ECE0925555453006023E8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ECE0825555453006023E8 /* MainTabBarController.swift */; };
@@ -89,6 +92,8 @@
 		8443275C2546FF9B00D6FF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8443276B2546FFF300D6FF77 /* Field.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Field.storyboard; sourceTree = "<group>"; };
 		844327702547001D00D6FF77 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		84467C5D255EF75A00E21F9F /* FieldSecondTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSecondTransition.swift; sourceTree = "<group>"; };
+		84467C62255EF77300E21F9F /* FieldThirdTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldThirdTransition.swift; sourceTree = "<group>"; };
 		844E3E7E254E85DA00731D9E /* FieldFirstModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldFirstModel.swift; sourceTree = "<group>"; };
 		844E3E83254E928400731D9E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		844E3E88254E929600731D9E /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		84628DAE2552FADC003DC210 /* FieldThirdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldThirdModel.swift; sourceTree = "<group>"; };
 		84628DB32552FD89003DC210 /* SearchArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleModel.swift; sourceTree = "<group>"; };
 		846C05F1254DA6E2008F4E90 /* UIViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
+		84729FBA255D64F6004834B0 /* FieldFirstTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldFirstTransition.swift; sourceTree = "<group>"; };
 		847378E8255153DA000F0156 /* SearchArticle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchArticle.storyboard; sourceTree = "<group>"; };
 		847378ED255153FC000F0156 /* SearchArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
 		848ECE0825555453006023E8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				845ECAD2254AC118004675AC /* Model */,
 				84C7CE462554137400922EB6 /* Presenter */,
+				84467C67255EF87C00E21F9F /* TransitionRouter */,
 				846C05F0254DA68E008F4E90 /* Extension */,
 				845ECAD3254AC124004675AC /* View */,
 				845ECAD4254AC14E004675AC /* Storyboard */,
@@ -209,6 +216,16 @@
 				8443275C2546FF9B00D6FF77 /* Info.plist */,
 			);
 			path = QiitaAppUITests;
+			sourceTree = "<group>";
+		};
+		84467C67255EF87C00E21F9F /* TransitionRouter */ = {
+			isa = PBXGroup;
+			children = (
+				84729FBA255D64F6004834B0 /* FieldFirstTransition.swift */,
+				84467C5D255EF75A00E21F9F /* FieldSecondTransition.swift */,
+				84467C62255EF77300E21F9F /* FieldThirdTransition.swift */,
+			);
+			path = TransitionRouter;
 			sourceTree = "<group>";
 		};
 		845ECAD2254AC118004675AC /* Model */ = {
@@ -556,9 +573,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				845D033A25486C1B002855F5 /* FieldFirstViewController.swift in Sources */,
+				84467C63255EF77300E21F9F /* FieldThirdTransition.swift in Sources */,
 				845ECAD7254AC2E8004675AC /* ArticleEntity.swift in Sources */,
 				848ECE0925555453006023E8 /* MainTabBarController.swift in Sources */,
 				84628D9F2552EB0D003DC210 /* FieldSecondModel.swift in Sources */,
+				84729FBB255D64F6004834B0 /* FieldFirstTransition.swift in Sources */,
 				844E3E8E254F17FB00731D9E /* Date_Extension.swift in Sources */,
 				845D035025488241002855F5 /* ArticleCustomCell.swift in Sources */,
 				84959415254703D000F57661 /* SearchViewController.swift in Sources */,
@@ -579,6 +598,7 @@
 				845DA6E2255A9FCC00029139 /* CustomTableView.swift in Sources */,
 				845D033F25486C37002855F5 /* FieldSecondViewController.swift in Sources */,
 				845D034425486C59002855F5 /* FieldThirdViewController.swift in Sources */,
+				84467C5E255EF75A00E21F9F /* FieldSecondTransition.swift in Sources */,
 				84C0F4A42550736F00B44C0A /* SearchTableViewCell.swift in Sources */,
 				84628DAF2552FADC003DC210 /* FieldThirdModel.swift in Sources */,
 			);

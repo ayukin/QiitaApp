@@ -18,9 +18,9 @@ class FieldViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // 強制的に再選択し、changeCurrentIndexProgressiveを動作させる（ 0番目 → 1番目 → 0番目 ）
-        moveToViewController(at: 1, animated: false)
-        moveToViewController(at: 0, animated: false)
+//        // 強制的に再選択し、changeCurrentIndexProgressiveを動作させる（ 0番目 → 1番目 → 0番目 ）
+//        moveToViewController(at: 1, animated: false)
+//        moveToViewController(at: 0, animated: false)
     }
     
      private func setupUI() {
@@ -57,19 +57,22 @@ class FieldViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理
         let firstVC = UIStoryboard(name: "FieldFirst", bundle: nil).instantiateInitialViewController() as! FieldFirstViewController
-        let model1 = FieldFirstModel()
-        let presenter1 = FieldFirstPresenter(view: firstVC, model: model1)
-        firstVC.inject(presenter: presenter1)
+        let firstModel = FieldFirstModel()
+        let firstRouter = FieldFirstTransition(viewController: firstVC)
+        let firstPresenter = FieldFirstPresenter(view: firstVC, model: firstModel, router: firstRouter)
+        firstVC.inject(presenter: firstPresenter)
         
         let secondVC = UIStoryboard(name: "FieldSecond", bundle: nil).instantiateInitialViewController() as! FieldSecondViewController
-        let model2 = FieldSecondModel()
-        let presenter2 = FieldSecondPresenter(view: secondVC, model: model2)
-        secondVC.inject(presenter: presenter2)
+        let secondModel = FieldSecondModel()
+        let secondRouter = FieldSecondTransition(viewController: secondVC)
+        let secondPresenter = FieldSecondPresenter(view: secondVC, model: secondModel, router: secondRouter)
+        secondVC.inject(presenter: secondPresenter)
         
         let thirdVC = UIStoryboard(name: "FieldThird", bundle: nil).instantiateInitialViewController() as! FieldThirdViewController
-        let model3 = FieldThirdModel()
-        let presenter3 = FieldThirdPresenter(view: thirdVC, model: model3)
-        thirdVC.inject(presenter: presenter3)
+        let thirdModel = FieldThirdModel()
+        let thirdRouter = FieldThirdTransition(viewController: thirdVC)
+        let thirdPresenter = FieldThirdPresenter(view: thirdVC, model: thirdModel, router: thirdRouter)
+        thirdVC.inject(presenter: thirdPresenter)
                 
         let childViewControllers:[UIViewController] = [firstVC, secondVC, thirdVC]
         return childViewControllers
