@@ -29,17 +29,10 @@ final class SearchArticleViewController: UIViewController {
                 
         presenter = SearchArticlePresenter(view: self, model: SearchArticleModel() as SearchArticleModelInput)
         
+        // refreshControlを呼び出し、ローディングする
         tableView.beginRefreshing()
         // Qiitaからデータ取得する処理
         presenter.getArticlesAction(tag: tag)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//
-//        tableView.beginRefreshing()
-//        // Qiitaからデータ取得する処理
-//        presenter.getArticlesAction(tag: tag)
     }
 
     @objc private func refreshArticlesAction() {

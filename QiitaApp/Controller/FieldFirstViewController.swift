@@ -29,21 +29,13 @@ final class FieldFirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // refreshControlを呼び出し、ローディングする
         tableView.beginRefreshing()
         // Qiitaからデータ取得する処理
         presenter.getArticlesAction()
 
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-//        tableView.beginRefreshing()
-//        // Qiitaからデータ取得する処理
-//        presenter.getArticlesAction()
-    }
-    
+        
     @objc private func refreshArticlesAction() {
         // Qiitaからデータ取得する処理
         presenter.refreshArticlesAction()

@@ -23,6 +23,7 @@ class CustomTableView: UITableView {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "読み込み中")
         self.refreshControl = refreshControl
+        self.tableFooterView = UIView()
     }
         
     func addTargetToRefreshControl(_ target: Any?, action: Selector, event: UIControl.Event) {
