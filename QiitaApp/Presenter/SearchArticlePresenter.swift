@@ -13,6 +13,7 @@ protocol SearchArticlePresenterInput {
     func refreshArticlesAction(tag: String)
     func updateArticlesAction(tag: String)
     func article(forRow row: Int) -> ArticleEntity?
+    func transitionAction(forRow row: Int)
 }
 
 protocol SearchArticlePresenterOutput: AnyObject {
@@ -24,6 +25,7 @@ final class SearchArticlePresenter: SearchArticlePresenterInput {
     
     private weak var view: SearchArticlePresenterOutput!
     private var model: SearchArticleModelInput
+    private var router: SearchArticleTransitionRouter
     
     private(set) var articles: [ArticleEntity] = []
     
@@ -31,9 +33,10 @@ final class SearchArticlePresenter: SearchArticlePresenterInput {
     private var refreshing: Bool = false
     private var page: Int = 20
     
-    init(view: SearchArticlePresenterOutput, model: SearchArticleModelInput) {
+    init(view: SearchArticlePresenterOutput, model: SearchArticleModelInput, router: SearchArticleTransitionRouter) {
         self.view = view
         self.model = model
+        self.router = router
     }
     
     // Qiitaからデータ取得する処理
@@ -82,6 +85,13 @@ final class SearchArticlePresenter: SearchArticlePresenterInput {
     func article(forRow row: Int) -> ArticleEntity? {
         guard row < articles.count else { return nil }
         return articles[row]
+    }
+    
+    func transitionAction(forRow row: Int) {
+        guard row < articles.count else { return }
+        let url = articles[row].url
+        // 画面遷移の処理
+        router.transition(url: url)
     }
         
 }

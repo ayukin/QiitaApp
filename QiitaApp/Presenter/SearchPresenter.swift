@@ -13,6 +13,7 @@ protocol SearchPresenterInput {
     func removeSearchListAction(indexPath: Int)
     func appendSearchListAction(text: String)
     func search(forRow row: Int) -> String?
+    func transitionAction(forRow row: Int)
 }
 
 protocol SearchPresenterOutput: AnyObject {
@@ -22,10 +23,12 @@ protocol SearchPresenterOutput: AnyObject {
 final class SearchPresenter: SearchPresenterInput {
     
     private weak var view: SearchPresenterOutput!
+    private var router: SearchTransitionRouter
     private(set) var searchList: [String] = []
     
-    init(view: SearchPresenterOutput) {
+    init(view: SearchPresenterOutput, router: SearchTransitionRouter) {
         self.view = view
+        self.router = router
     }
     
     func getSearchListAction() {
@@ -58,11 +61,20 @@ final class SearchPresenter: SearchPresenterInput {
             storedSearchList.append(text)
             userDefaults.set(storedSearchList, forKey: "searchList")
         }
+        // 画面遷移の処理
+        router.transition(tag: text)
     }
     
     func search(forRow row: Int) -> String? {
         guard row < searchList.count else { return nil }
         return searchList[row]
+    }
+    
+    func transitionAction(forRow row: Int) {
+        guard row < searchList.count else { return }
+        let text = searchList[row]
+        // 画面遷移の処理
+        router.transition(tag: text)
     }
     
 }

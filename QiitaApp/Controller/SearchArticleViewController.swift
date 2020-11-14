@@ -27,7 +27,7 @@ final class SearchArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        presenter = SearchArticlePresenter(view: self, model: SearchArticleModel() as SearchArticleModelInput)
+        presenter = SearchArticlePresenter(view: self, model: SearchArticleModel() as SearchArticleModelInput, router: SearchArticleTransition(viewController: self))
         
         // refreshControlを呼び出し、ローディングする
         tableView.beginRefreshing()
@@ -63,19 +63,8 @@ extension SearchArticleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // 遷移先のView（WebViewController）を取得
-        let storyboard = UIStoryboard(name: "Web", bundle: nil)
-        let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
-        // WebViewControllerへ情報を渡す
-        if let article = presenter.article(forRow: indexPath.row) {
-            webVC.url = article.url
-        }
-        // WebViewControllerの「戻るボタン」をカスタマイズ
-        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButton
-        // WebViewControllerへ画面遷移
-        self.navigationController?.pushViewController(webVC, animated: true)
+        // WebViewControllerへ画面遷移する処理
+        presenter.transitionAction(forRow: indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -101,5 +90,4 @@ extension SearchArticleViewController: SearchArticlePresenterOutput {
         tableView.endRefreshing()
         displayEmptyView(message: "データ取得に失敗しました")
     }
-    
 }

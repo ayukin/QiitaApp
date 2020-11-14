@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchPresenter(view: self)
+        presenter = SearchPresenter(view: self, router: SearchTransition(viewController: self))
         // UserDefaultsから検索履歴を読み込む
         presenter.getSearchListAction()
     }
@@ -74,26 +74,11 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
-    func refreshArticlesAction() {
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // 遷移先のView（SearchArticleViewController）を取得
-        let storyboard = UIStoryboard(name: "SearchArticle", bundle: nil)
-        let searchArticleVC = storyboard.instantiateViewController(withIdentifier: "SearchArticleVC") as! SearchArticleViewController
-        // SearchArticleViewControllerへ情報を渡す
-        if let searchWord = presenter.search(forRow: indexPath.row) {
-            searchArticleVC.tag = searchWord
-        }
-        // SearchArticleViewControllerの「戻るボタン」をカスタマイズ
-        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButton
-        // SearchArticleViewControllerへ画面遷移
-        self.navigationController?.pushViewController(searchArticleVC, animated: true)
+        // SearchArticleViewControllerへ画面遷移する処理
+        presenter.transitionAction(forRow: indexPath.row)
     }
 }
 
@@ -110,28 +95,15 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = true
         return true
     }
-    
     // 検索キータップ時に呼び出されるメソッド
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
         
         guard let text = searchBar.text else { return }
-        // todolistとUserDefaultsへ検索履歴の保存
+        // todolistとUserDefaultsへ検索履歴の保存し、SearchArticleViewControllerへ画面遷移
         presenter.appendSearchListAction(text: text)
-        
-        // 遷移先のView（SearchArticleViewController）を取得
-        let storyboard = UIStoryboard(name: "SearchArticle", bundle: nil)
-        let searchArticleVC = storyboard.instantiateViewController(withIdentifier: "SearchArticleVC") as! SearchArticleViewController
-        // SearchArticleViewControllerへ情報を渡す
-        searchArticleVC.tag = text
-        // SearchArticleViewControllerの「戻るボタン」をカスタマイズ
-        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButton
-        // SearchArticleViewControllerへ画面遷移
-        self.navigationController?.pushViewController(searchArticleVC, animated: true)
     }
-    
     // キャンセルボタンが押されたらキャンセルボタンを無効にしてフォーカスを外す
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false

@@ -23,6 +23,8 @@
 		844E3E84254E928400731D9E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E3E83254E928400731D9E /* WebViewController.swift */; };
 		844E3E89254E929600731D9E /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844E3E88254E929600731D9E /* Web.storyboard */; };
 		844E3E8E254F17FB00731D9E /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E3E8D254F17FB00731D9E /* Date_Extension.swift */; };
+		84568C09255FB141000757C8 /* SearchArticleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84568C08255FB141000757C8 /* SearchArticleTransition.swift */; };
+		84568C0E255FB15B000757C8 /* SearchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84568C0D255FB15B000757C8 /* SearchTransition.swift */; };
 		845D032B25486BD4002855F5 /* FieldFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845D032A25486BD4002855F5 /* FieldFirst.storyboard */; };
 		845D033025486BF0002855F5 /* FieldSecond.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845D032F25486BF0002855F5 /* FieldSecond.storyboard */; };
 		845D033525486C07002855F5 /* FieldThird.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845D033425486C07002855F5 /* FieldThird.storyboard */; };
@@ -98,6 +100,8 @@
 		844E3E83254E928400731D9E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		844E3E88254E929600731D9E /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 		844E3E8D254F17FB00731D9E /* Date_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
+		84568C08255FB141000757C8 /* SearchArticleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleTransition.swift; sourceTree = "<group>"; };
+		84568C0D255FB15B000757C8 /* SearchTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTransition.swift; sourceTree = "<group>"; };
 		845D032A25486BD4002855F5 /* FieldFirst.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FieldFirst.storyboard; sourceTree = "<group>"; };
 		845D032F25486BF0002855F5 /* FieldSecond.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FieldSecond.storyboard; sourceTree = "<group>"; };
 		845D033425486C07002855F5 /* FieldThird.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FieldThird.storyboard; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				84729FBA255D64F6004834B0 /* FieldFirstTransition.swift */,
 				84467C5D255EF75A00E21F9F /* FieldSecondTransition.swift */,
 				84467C62255EF77300E21F9F /* FieldThirdTransition.swift */,
+				84568C0D255FB15B000757C8 /* SearchTransition.swift */,
+				84568C08255FB141000757C8 /* SearchArticleTransition.swift */,
 			);
 			path = TransitionRouter;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84568C0E255FB15B000757C8 /* SearchTransition.swift in Sources */,
 				845D033A25486C1B002855F5 /* FieldFirstViewController.swift in Sources */,
 				84467C63255EF77300E21F9F /* FieldThirdTransition.swift in Sources */,
 				845ECAD7254AC2E8004675AC /* ArticleEntity.swift in Sources */,
@@ -595,6 +602,7 @@
 				846C05F2254DA6E2008F4E90 /* UIViewController_Extension.swift in Sources */,
 				848ECE1625559FF0006023E8 /* FieldFirstPresenter.swift in Sources */,
 				84959410254703AE00F57661 /* FieldViewController.swift in Sources */,
+				84568C09255FB141000757C8 /* SearchArticleTransition.swift in Sources */,
 				845DA6E2255A9FCC00029139 /* CustomTableView.swift in Sources */,
 				845D033F25486C37002855F5 /* FieldSecondViewController.swift in Sources */,
 				845D034425486C59002855F5 /* FieldThirdViewController.swift in Sources */,
