@@ -30,7 +30,6 @@ final class FieldThirdPresenter: FieldThirdPresenterInput {
     private(set) var articles: [ArticleEntity] = []
     
     private var reloading: Bool = false
-    private var refreshing: Bool = false
     private var page: Int = 20
     
     init(view: FieldThirdPresenterOutput, model: FieldThirdModelInput, router: FieldThirdTransitionRouter) {
@@ -45,10 +44,7 @@ final class FieldThirdPresenter: FieldThirdPresenterInput {
             // 情報が取得できているか判定
             if let articleValue = articles {
                 // 取得成功の場合
-                if refreshing {
-                    // リフレッシュ処理のフラグを「false」
-                    refreshing.toggle()
-                } else if reloading {
+                if reloading {
                     // リロード処理のフラグ変更を「false」
                     reloading.toggle()
                 }
@@ -65,8 +61,6 @@ final class FieldThirdPresenter: FieldThirdPresenterInput {
     func refreshArticlesAction() {
         // 取得数を初期値にする
         page = 20
-        // リフレッシュ処理のフラグを「true」
-        refreshing.toggle()
         // Qiitaからデータ取得する処理
         getArticlesAction()
     }

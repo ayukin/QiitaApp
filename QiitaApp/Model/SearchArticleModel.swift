@@ -24,6 +24,7 @@ final class SearchArticleModel: SearchArticleModelInput {
                 guard let data = response.data else { return }
                 do {
                     let articles = try JSONDecoder().decode([ArticleEntity].self, from: data)
+                    
                     callback(articles)
                 } catch {
                     callback(nil)
