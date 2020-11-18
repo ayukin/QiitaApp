@@ -9,29 +9,27 @@ import Foundation
 import Alamofire
 
 protocol SearchArticleModelInput {
-    func getAPIInformations(page: Int, tag: String, callback: @escaping ([ArticleEntity]?) -> Void)
+    func getAPIInformations(page: Int, tag: String, completion: @escaping (Result<[ArticleEntity]?, Error>) -> Void)
 }
 
 final class SearchArticleModel: SearchArticleModelInput {
     
-    func getAPIInformations(page: Int, tag: String, callback: @escaping ([ArticleEntity]?) -> Void) {
+    func getAPIInformations(page: Int, tag: String, completion: @escaping (Result<[ArticleEntity]?, Error>) -> Void) {
         
         let url = UrlStyle.search(tag: tag).urlType(page: page)
         
         AF.request(url).validate().response { response in
             switch response.result {
-            case .success(_):
-                guard let data = response.data else { return }
+            case .success(let response):
+                guard let data = response else { return }
                 do {
-                    let articles = try JSONDecoder().decode([ArticleEntity].self, from: data)
-                    
-                    callback(articles)
+                    let repositories = try JSONDecoder().decode([ArticleEntity].self, from: data)
+                    completion(.success(repositories))
                 } catch {
-                    callback(nil)
+                    completion(.success(nil))
                 }
-            case .failure(_):
-                print(response.error ?? "")
-                callback(nil)
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

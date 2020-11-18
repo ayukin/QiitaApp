@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol FieldThirdPresenterInput {
     var articles: [ArticleEntity] { get }
@@ -18,7 +19,7 @@ protocol FieldThirdPresenterInput {
 
 protocol FieldThirdPresenterOutput: AnyObject {
     func completedGetArticlesAction(_ articles: [ArticleEntity])
-    func failedGetArticlesAction()
+    func failedGetArticlesAction(string: String)
 }
 
 final class FieldThirdPresenter: FieldThirdPresenterInput {
@@ -40,23 +41,50 @@ final class FieldThirdPresenter: FieldThirdPresenterInput {
     
     // Qiitaからデータ取得する処理
     func getArticlesAction() {
-        model.getAPIInformations(page: page) { [self] (articles) in
-            // 情報が取得できているか判定
-            if let articleValue = articles {
-                // 取得成功の場合
-                if reloading {
+        model.getAPIInformations(page: page) { [self] (response) in
+            switch response {
+            case .success(let repositories):
+                // 情報が取得できているか判定
+                if let articleValue = repositories {
                     // リロード処理のフラグ変更を「false」
-                    reloading.toggle()
+                    if reloading { reloading.toggle() }
+
+                    if articleValue.count == 0 {
+                        // 検索結果が０件の場合
+                        view.failedGetArticlesAction(string: "検索結果が０件です")
+                    } else {
+                        // 取得成功の場合
+                        self.articles = articleValue
+                        view.completedGetArticlesAction(self.articles)
+                    }
+                } else {
+                    // 取得失敗の場合
+                    view.failedGetArticlesAction(string: "テータ取得に失敗しました")
                 }
-                // 取得成功の場合
-                self.articles = articleValue
-                view.completedGetArticlesAction(self.articles)
-            } else {
-                // 取得失敗の場合
-                view.failedGetArticlesAction()
+            case .failure(let e):
+                if case AFError.sessionTaskFailed(error: let error) = e {
+                    let nsError = error as NSError
+                    // ネットワーク接続エラー（ NSURLErrorNotConnectedToInternet = -1009 ）
+                    if nsError.code == -1009 {
+                        print(nsError.domain)
+                        print(nsError.code)
+                        print(nsError.userInfo)
+                        // 取得失敗の場合
+                        view.failedGetArticlesAction(string: "ネットワークに接続されていません")
+                    } else {
+                        print(nsError.domain)
+                        print(nsError.code)
+                        print(nsError.userInfo)
+                    }
+                } else {
+                    print(e.localizedDescription)
+                    // 取得失敗の場合
+                    view.failedGetArticlesAction(string: "通信エラーが発生しました")
+                }
             }
         }
     }
+
     
     func refreshArticlesAction() {
         // 取得数を初期値にする

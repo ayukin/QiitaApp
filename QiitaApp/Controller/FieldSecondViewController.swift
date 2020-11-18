@@ -92,10 +92,9 @@ extension FieldSecondViewController: FieldSecondPresenterOutput {
         tableView.reloadData()
     }
     // Qiitaからデータの取得失敗した時の処理
-    func failedGetArticlesAction() {
+    func failedGetArticlesAction(string: String) {
         tableView.endRefreshing()
-        displayEmptyView(message: "データ取得に失敗しました")
+        displayEmptyView(message: string)
     }
-    
 }
 

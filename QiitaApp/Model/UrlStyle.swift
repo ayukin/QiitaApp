@@ -23,6 +23,10 @@ enum UrlStyle {
         case .swift:
             return url + "&query=tag:Swift"
         case let .search(tag):
+            // 検索文字列にパーセントエンコーディングをかける
+            if let tagString: String = tag.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                return url + "&query=tag:\(tagString)"
+            }
             return url + "&query=tag:\(tag)"
         }
     }
