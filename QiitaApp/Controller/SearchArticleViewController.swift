@@ -68,12 +68,14 @@ extension SearchArticleViewController: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.size.height
-        let contentYoffset = scrollView.contentOffset.y
-        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height {
-            // Qiitaからデータ取得する処理
-            presenter.updateArticlesAction(tag: tag)
+        if scrollView.contentOffset.y > 0 {
+            let height = scrollView.frame.size.height
+            let contentYoffset = scrollView.contentOffset.y
+            let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+            if distanceFromBottom < height {
+                // Qiitaからデータ取得する処理
+                presenter.updateArticlesAction(tag: tag)
+            }
         }
     }
 
