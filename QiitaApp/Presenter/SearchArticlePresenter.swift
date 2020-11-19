@@ -61,26 +61,9 @@ final class SearchArticlePresenter: SearchArticlePresenterInput {
                     // 取得失敗の場合
                     view.failedGetArticlesAction(string: "テータ取得に失敗しました")
                 }
-            case .failure(let e):
-                if case AFError.sessionTaskFailed(error: let error) = e {
-                    let nsError = error as NSError
-                    // ネットワーク接続エラー（ NSURLErrorNotConnectedToInternet = -1009 ）
-                    if nsError.code == -1009 {
-                        print(nsError.domain)
-                        print(nsError.code)
-                        print(nsError.userInfo)
-                        // 取得失敗の場合
-                        view.failedGetArticlesAction(string: "ネットワークに接続されていません")
-                    } else {
-                        print(nsError.domain)
-                        print(nsError.code)
-                        print(nsError.userInfo)
-                    }
-                } else {
-                    print(e.localizedDescription)
-                    // 取得失敗の場合
-                    view.failedGetArticlesAction(string: "通信エラーが発生しました")
-                }
+            case .failure(let error):
+                // 取得失敗の場合
+                view.failedGetArticlesAction(string: ApiError(error: error).errorMessage)
             }
         }
     }

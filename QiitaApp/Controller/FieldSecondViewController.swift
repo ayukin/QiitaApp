@@ -74,14 +74,13 @@ extension FieldSecondViewController: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 0 {
-            let height = scrollView.frame.size.height
-            let contentYoffset = scrollView.contentOffset.y
-            let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-            if distanceFromBottom < height {
-                // Qiitaからデータ取得する処理
-                presenter.updateArticlesAction()
-            }
+        guard scrollView.contentOffset.y > 0 else { return }
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            // Qiitaからデータ取得する処理
+            presenter.updateArticlesAction()
         }
     }
 
