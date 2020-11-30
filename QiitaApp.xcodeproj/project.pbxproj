@@ -53,6 +53,7 @@
 		84959415254703D000F57661 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959414254703D000F57661 /* SearchViewController.swift */; };
 		84C0F4A42550736F00B44C0A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0F4A32550736F00B44C0A /* SearchTableViewCell.swift */; };
 		84C7CE48255413AA00922EB6 /* FieldThirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7CE47255413AA00922EB6 /* FieldThirdPresenter.swift */; };
+		84F27BD52569903D001C2986 /* FieldFirstPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F27BD42569903D001C2986 /* FieldFirstPresenterTest.swift */; };
 		B0C771C034BC84FDAE33216F /* Pods_QiitaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B09309C4A09EE76C2ED643 /* Pods_QiitaApp.framework */; };
 		B56D82D2AB09299C2CB99256 /* Pods_QiitaApp_QiitaAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4B52F38170B0A5192C8909 /* Pods_QiitaApp_QiitaAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		84959414254703D000F57661 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		84C0F4A32550736F00B44C0A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		84C7CE47255413AA00922EB6 /* FieldThirdPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldThirdPresenter.swift; sourceTree = "<group>"; };
+		84F27BD42569903D001C2986 /* FieldFirstPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldFirstPresenterTest.swift; sourceTree = "<group>"; };
 		89C60AF7B3983154D704323B /* Pods-QiitaAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaAppTests.debug.xcconfig"; path = "Target Support Files/Pods-QiitaAppTests/Pods-QiitaAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3B09309C4A09EE76C2ED643 /* Pods_QiitaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4B52F38170B0A5192C8909 /* Pods_QiitaApp_QiitaAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaApp_QiitaAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				8443274F2546FF9B00D6FF77 /* QiitaAppTests.swift */,
+				84F27BD42569903D001C2986 /* FieldFirstPresenterTest.swift */,
 				844327512546FF9B00D6FF77 /* Info.plist */,
 			);
 			path = QiitaAppTests;
@@ -620,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F27BD52569903D001C2986 /* FieldFirstPresenterTest.swift in Sources */,
 				844327502546FF9B00D6FF77 /* QiitaAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

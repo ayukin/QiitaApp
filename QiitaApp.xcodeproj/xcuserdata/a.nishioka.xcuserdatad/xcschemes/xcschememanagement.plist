@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>QiitaApp.xcscheme_^#shared#^_</key>
+		<key>Copy of QiitaApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>8</integer>
+		</dict>
+		<key>QiitaApp.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>844327342546FF9800D6FF77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8443274A2546FF9B00D6FF77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>844327552546FF9B00D6FF77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
