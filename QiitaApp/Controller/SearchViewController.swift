@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchPresenter(view: self, router: SearchTransition(viewController: self))
+        presenter = SearchPresenter(view: self, model: SearchModel(), router: SearchTransition(viewController: self))
         // UserDefaultsから検索履歴を読み込む
         presenter.getSearchListAction()
     }

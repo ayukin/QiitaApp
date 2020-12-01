@@ -1,21 +1,21 @@
 //
-//  FieldFirstPresenterTest.swift
+//  FieldSecondPresenterTest.swift
 //  QiitaAppTests
 //
-//  Created by Ayuki Nishioka on 2020/11/22.
+//  Created by Ayuki Nishioka on 2020/12/01.
 //
 
 import XCTest
 @testable import QiitaApp
 
-class FieldFirstPresenterTest: XCTestCase {
+class FieldSecondPresenterTest: XCTestCase {
     
-    var router: FieldFirstTransitionRouter!
+    var router: FieldSecondTransitionRouter!
 
     override func setUpWithError() throws {
         super.setUp()
-        let vc = UIStoryboard(name: "FieldFirst", bundle: nil).instantiateInitialViewController() as! FieldFirstViewController
-        router = FieldFirstTransition(viewController: vc)
+        let vc = UIStoryboard(name: "FieldSecond", bundle: nil).instantiateInitialViewController() as! FieldSecondViewController
+        router = FieldSecondTransition(viewController: vc)
     }
 
     override func tearDownWithError() throws {
@@ -29,10 +29,10 @@ class FieldFirstPresenterTest: XCTestCase {
                                       user: ArticleEntity.User(id: "1",
                                                                profile_image_url: "http://bbb.com"))]
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .success(entities))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .success(entities))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 XCTAssertTrue(true)
             }
@@ -45,10 +45,10 @@ class FieldFirstPresenterTest: XCTestCase {
     func testGetArticlesAction_Failure() {
         
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .failure(NSError()))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .failure(NSError()))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 XCTFail()
             }
@@ -61,10 +61,10 @@ class FieldFirstPresenterTest: XCTestCase {
     func testGetArticlesAction_Nil() {
         
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .success(nil))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .success(nil))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 XCTFail()
             }
@@ -77,10 +77,10 @@ class FieldFirstPresenterTest: XCTestCase {
     func testGetArticlesAction_None() {
         
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .success([]))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .success([]))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 XCTFail()
             }
@@ -97,10 +97,10 @@ class FieldFirstPresenterTest: XCTestCase {
                                       user: ArticleEntity.User(id: "1",
                                                                profile_image_url: "http://bbb.com"))]
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .success(entities))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .success(entities))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             var articles: [ArticleEntity] = []
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 self.articles = articles
@@ -120,10 +120,10 @@ class FieldFirstPresenterTest: XCTestCase {
                                       user: ArticleEntity.User(id: "1",
                                                                profile_image_url: "http://bbb.com"))]
         let view = View()
-        let model = FieldFirstPresenterModelMock(response: .success(entities))
-        let presenter = FieldFirstPresenter(view: view, model: model, router: router)
+        let model = FieldSecondPresenterModelMock(response: .success(entities))
+        let presenter = FieldSecondPresenter(view: view, model: model, router: router)
         presenter.getArticlesAction()
-        class View: FieldFirstPresenterOutput {
+        class View: FieldSecondPresenterOutput {
             var articles: [ArticleEntity] = []
             func completedGetArticlesAction(_ articles: [ArticleEntity]) {
                 self.articles = articles
@@ -138,7 +138,7 @@ class FieldFirstPresenterTest: XCTestCase {
 
 }
 
-class FieldFirstPresenterModelMock: FieldFirstModelInput {
+class FieldSecondPresenterModelMock: FieldSecondModelInput {
     var response: Result<[ArticleEntity]?, Error>!
     
     init(response: Result<[ArticleEntity]?, Error>) {

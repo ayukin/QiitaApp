@@ -23,30 +23,66 @@ protocol SearchPresenterOutput: AnyObject {
 final class SearchPresenter: SearchPresenterInput {
     
     private weak var view: SearchPresenterOutput!
+    private var model: SearchModelInput
     private var router: SearchTransitionRouter
     private(set) var searchList: [String] = []
     
-    init(view: SearchPresenterOutput, router: SearchTransitionRouter) {
+//    init(view: SearchPresenterOutput, router: SearchTransitionRouter) {
+//        self.view = view
+//        self.router = router
+//    }
+    
+    init(view: SearchPresenterOutput, model: SearchModelInput, router: SearchTransitionRouter) {
         self.view = view
+        self.model = model
         self.router = router
     }
+
+//    func getSearchListAction() {
+//        // UserDefaultsから検索履歴を読み込む
+//        let userDefaults = UserDefaults.standard
+//        if let storedSearchList = userDefaults.array(forKey: "searchList") as? [String] {
+//            searchList = storedSearchList
+//        }
+//    }
+
+//    func removeSearchListAction(indexPath: Int) {
+//        // todolistから削除
+//        searchList.remove(at: indexPath)
+//        // UserDefaultsから削除
+//        let userDefaults = UserDefaults.standard
+//        var storedSearchList = userDefaults.array(forKey: "searchList") as? [String]
+//        storedSearchList?.remove(at: indexPath)
+//        userDefaults.set(storedSearchList, forKey: "searchList")
+//        view.reloadAction()
+//    }
+    
+//    func appendSearchListAction(text: String) {
+//        // 保存済み検索履歴の二重チェック
+//        if !searchList.contains(text) {
+//            // todolistに保存
+//            searchList.append(text)
+//            // UserDefaultsに保存
+//            let userDefaults = UserDefaults.standard
+//            var storedSearchList = userDefaults.array(forKey: "searchList") as? [String] ?? []
+//            storedSearchList.append(text)
+//            userDefaults.set(storedSearchList, forKey: "searchList")
+//        }
+//        // 画面遷移の処理
+//        router.transition(tag: text)
+//    }
     
     func getSearchListAction() {
         // UserDefaultsから検索履歴を読み込む
-        let userDefaults = UserDefaults.standard
-        if let storedSearchList = userDefaults.array(forKey: "searchList") as? [String] {
-            searchList = storedSearchList
-        }
+        searchList = model.getSearchList()
     }
     
     func removeSearchListAction(indexPath: Int) {
         // todolistから削除
         searchList.remove(at: indexPath)
         // UserDefaultsから削除
-        let userDefaults = UserDefaults.standard
-        var storedSearchList = userDefaults.array(forKey: "searchList") as? [String]
-        storedSearchList?.remove(at: indexPath)
-        userDefaults.set(storedSearchList, forKey: "searchList")
+        model.removeSearchList(indexPath: indexPath)
+        // tableViewの更新
         view.reloadAction()
     }
     
@@ -56,10 +92,7 @@ final class SearchPresenter: SearchPresenterInput {
             // todolistに保存
             searchList.append(text)
             // UserDefaultsに保存
-            let userDefaults = UserDefaults.standard
-            var storedSearchList = userDefaults.array(forKey: "searchList") as? [String] ?? []
-            storedSearchList.append(text)
-            userDefaults.set(storedSearchList, forKey: "searchList")
+            model.appendSearchList(text: text)
         }
         // 画面遷移の処理
         router.transition(tag: text)

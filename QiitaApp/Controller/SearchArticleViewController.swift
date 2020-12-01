@@ -27,7 +27,7 @@ final class SearchArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        presenter = SearchArticlePresenter(view: self, model: SearchArticleModel() as SearchArticleModelInput, router: SearchArticleTransition(viewController: self))
+        presenter = SearchArticlePresenter(view: self, model: SearchArticleModel(), router: SearchArticleTransition(viewController: self))
         
         // refreshControlを呼び出し、ローディングする
         tableView.beginRefreshing()
