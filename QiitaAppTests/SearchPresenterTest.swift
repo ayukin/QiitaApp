@@ -14,7 +14,8 @@ class SearchPresenterTest: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
-        let vc = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! SearchViewController
+        let nav = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let vc = nav.topViewController as! SearchViewController
         router = SearchTransition(viewController: vc)
     }
 
@@ -24,7 +25,8 @@ class SearchPresenterTest: XCTestCase {
     
     func testSearch_Success() {
         let searchWord = ["aaa"]
-        let view = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! SearchViewController
+        let nav = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let view = nav.topViewController as! SearchViewController
         let model = SearchPresenterModelMock(searchList: searchWord)
         let presenter = SearchPresenter(view: view, model: model, router: router)
         presenter.getSearchListAction()
@@ -35,7 +37,8 @@ class SearchPresenterTest: XCTestCase {
     
     func testSearch_Nil() {
         let searchWord = ["aaa"]
-        let view = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! SearchViewController
+        let nav = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let view = nav.topViewController as! SearchViewController
         let model = SearchPresenterModelMock(searchList: searchWord)
         let presenter = SearchPresenter(view: view, model: model, router: router)
         presenter.getSearchListAction()
